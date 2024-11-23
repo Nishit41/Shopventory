@@ -35,11 +35,7 @@ function CustomerDetails() {
         }))
     }
     function submitCustomerDetails() {
-<<<<<<< HEAD
         customerDetailsApi(addressObj).catch((err:any) => console.log("error", err));
-=======
-        customerDetailsApi(addressObj).then(response => console.log(response, "from edit api")).catch(err => console.log("error", err));
->>>>>>> 00c33b9e2a91c437811a09d54c293464bb4b0ca6
     }
     const handleClickRadioButton = (value: any) => {
         setTakeAddressObj(prevState => ({
