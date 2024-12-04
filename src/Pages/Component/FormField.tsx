@@ -8,7 +8,7 @@ export const FormField = ({ label, value, onChange, error, helperText }: {
     helperText?: string;
   }) => (
     <div style={{ textAlign: "left", marginBottom: "10px" }}>
-      {label}
+      <span style={{fontWeight:800}}>{label}</span>
       <TextField
         size="small"
         fullWidth

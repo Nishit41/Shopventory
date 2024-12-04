@@ -23,8 +23,6 @@ const Books = () => {
   const [bookPrice, setBookPrice] = useState<number>();
   const [counterDisplay, setCounter] = useState<boolean>(true);
   const [id, setid] = useState<number>();
-  const [bookName, setBookName] = useState<string>(" ");
-  const [dataInCart, setDataAddedInCart] = useState<any>([]);
   const getBookDetailsApi = async () => {
     try {
       const resp = await getBookDescription();
