@@ -25,7 +25,6 @@ function MyCartComponent() {
         "state": " "
     });
 
-     console.log("dataForCart",dataForCart);
 
 
     function displayCustomerDetails() {

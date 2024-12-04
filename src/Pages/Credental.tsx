@@ -1,25 +1,20 @@
 import { useState } from "react";
-import { Box, Button, TextField } from "@mui/material";
+import { AppBar, Box,Toolbar, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
 import { signInApi, signUpApi } from "./Services/userservices";
 import { validateInput } from "./utils/ValidateInput";
-import { FormField } from "./Component/FormField";
+import { EMPTY_STRING } from "./utils/constant";
+import { AuthForm } from "./Component/AuthForm";
 
 const SignIn = () => {
   const [SignUp, setSignUp] = useState(false);
   const [formState, setFormState] = useState({
-    email: "",
-    password: "",
-    fullName: "",
-    phone: "",
+    email: EMPTY_STRING,
+    password: EMPTY_STRING,
+    fullName: EMPTY_STRING,
+    phone: EMPTY_STRING,
   });
-  const [formErrors, setFormErrors] = useState({
-    email: "",
-    password: "",
-    fullName: "",
-    phone: "",
-  });
-
+  const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
 
   const handleChange = (field: string, value: string) => {
@@ -27,9 +22,8 @@ const SignIn = () => {
   };
 
   const handleValidation = () => {
-    const errors: any = {};
-    if (!validateInput("email", formState.email))
-      errors.email = "Invalid email";
+    const errors: Record<string, string> = {};
+    if (!validateInput("email", formState.email)) errors.email = "Invalid email";
     if (!validateInput("password", formState.password))
       errors.password = "Invalid password";
     if (SignUp && !validateInput("fullName", formState.fullName))
@@ -42,58 +36,37 @@ const SignIn = () => {
 
   const handleSubmit = () => {
     if (!handleValidation()) return;
+    const apiCall = SignUp
+      ? signUpApi(formState)
+      : signInApi({ email: formState.email, password: formState.password });
 
-    if (SignUp) {
-      signUpApi(formState).then(console.log).catch(console.error);
-    } else {
-      signInApi({ email: formState.email, password: formState.password })
-        .then((resp) => {
+    apiCall
+      .then((resp) => {
+        if (!SignUp) {
           localStorage.setItem("token", resp?.data?.result.accessToken);
           navigate("/Dashboard");
-        })
-        .catch(console.error);
-    }
+        }
+      })
+      .catch(console.error);
   };
 
   return (
-    <Box>
-      <Box>
-        <Button onClick={() => setSignUp(false)}>Login</Button>
-        <Button onClick={() => setSignUp(true)}>SignUp</Button>
+    <Box sx={{width:{md:"40%"}, margin:"auto",background:"orange",marginTop:20}}>
+      <Box sx={{paddingBottom:5}}>
+        <AppBar position="sticky" >
+        <Toolbar sx={{gap:2}}> 
+        <Typography onClick={() => setSignUp(false)} >Login</Typography>
+        <Typography onClick={() => setSignUp(true)} >SignUp</Typography>
+      </Toolbar>
+       </AppBar>
       </Box>
-      <FormField
-        label="Email"
-        value={formState.email}
-        onChange={(e) => handleChange("email", e.target.value)}
-        error={!!formErrors.email}
-        helperText={formErrors.email}
+      <AuthForm
+        formState={formState}
+        formErrors={formErrors}
+        onChange={handleChange}
+        isSignUp={SignUp}
+        onSubmit={handleSubmit}
       />
-      <FormField
-        label="Password"
-        value={formState.password}
-        onChange={(e) => handleChange("password", e.target.value)}
-        error={!!formErrors.password}
-        helperText={formErrors.password}
-      />
-      {SignUp && (
-        <>
-          <FormField
-            label="Full Name"
-            value={formState.fullName}
-            onChange={(e) => handleChange("fullName", e.target.value)}
-            error={!!formErrors.fullName}
-            helperText={formErrors.fullName}
-          />
-          <FormField
-            label="Phone"
-            value={formState.phone}
-            onChange={(e) => handleChange("phone", e.target.value)}
-            error={!!formErrors.phone}
-            helperText={formErrors.phone}
-          />
-        </>
-      )}
-      <Button onClick={handleSubmit}>{SignUp ? "SignUp" : "Login"}</Button>
     </Box>
   );
 };

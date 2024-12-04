@@ -250,7 +250,7 @@ export default function Header() {
         </Toolbar>
       </AppBar>
      
-      {/* {cartDisplay?<MyCartComponent/>:<BookComponent/>}  */}
+       {cartDisplay?<MyCartComponent/>:<BookComponent/>}  
     </Box>
   );
 }
