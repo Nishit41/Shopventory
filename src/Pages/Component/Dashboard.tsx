@@ -1,16 +1,17 @@
-import React from 'react'
-import Header from '../Component/Header';
-// import MyCartComponent from './Pages/Component/MyCartComponent';
-import Books from './Books';
-import { Box } from '@mui/material';
+import React from "react";
+import Header from "../Component/Header";
+import Books from "./Books";
+import { Box } from "@mui/material";
+import { Filter } from "../../features/common/Filter";
 
 function Dashboard() {
   return (
     <Box>
-        <Header/>
-       <Books/> 
-   </Box>
-  )
+      <Header />
+      <Filter />
+      <Books />
+    </Box>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
