@@ -2,6 +2,7 @@ import { Paper } from "@mui/material";
 import { bookDetails } from "../Pages/types/bookDetails";
 import { useDispatch } from "react-redux";
 import { setBookDetails } from "./BookSlice";
+import { useNavigate } from "react-router";
 
 interface Props {
   bookDetails: bookDetails;
@@ -20,17 +21,25 @@ export const Book = ({
   bookDetails,
   HandleBookDetailsLargeWidth,
 }: Props) => {
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+  const handleBookDescription = () => {
+    navigate(`/bookdetails/${bookDetails._id}`)
+  }
+
+        // HandleBookDetailsLargeWidth(description, author, price, _id, bookName);
+        // dispatch(setBookDetails(bookDetails));
+
+
   const { description, author, price, _id, bookName } = bookDetails;
   
   return (
     <Paper
       className="individualBook"
       elevation={2}
-      onClick={() =>{
-        HandleBookDetailsLargeWidth(description, author, price, _id, bookName);
-        // dispatch(setBookDetails(bookDetails));
-      }
+      onClick={
+        handleBookDescription
       }
       style={{ width: "14vw", height: "36vh", border: "0px solid" }}
     >
@@ -44,6 +53,7 @@ export const Book = ({
         <img
           src={bookpic}
           style={{ width: "60%", height: "100%", marginLeft: "18%" }}
+          alt="book"
         />
       </div>
       <div style={{ marginLeft: "10px" }}>

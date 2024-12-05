@@ -165,7 +165,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1,}}>
-      <AppBar position="static" style={{backgroundColor:"#A03037"}}>
+      <AppBar position="fixed" style={{backgroundColor:"#A03037"}}>
         <Toolbar>         
            <Typography
             variant="h6"
@@ -250,7 +250,7 @@ export default function Header() {
         </Toolbar>
       </AppBar>
      
-       {cartDisplay?<MyCartComponent/>:<BookComponent/>}  
+       {/* {cartDisplay?<MyCartComponent/>:<BookComponent/>}   */}
     </Box>
   );
 }
