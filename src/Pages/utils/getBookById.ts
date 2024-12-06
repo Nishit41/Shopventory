@@ -1,3 +1,5 @@
-export const getBookById = (id: string, books: any) => {
-  return books?.find((book) => book._id === id);
+import { bookDetails } from "../types/bookDetails";
+
+export const getBookById = (id: number, books: any) => {
+  return books?.find((book:bookDetails) => book._id === id);
 };

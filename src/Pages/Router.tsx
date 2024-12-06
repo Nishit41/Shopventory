@@ -1,28 +1,25 @@
-
-import React from 'react'
-import { BrowserRouter, Routes,Route } from 'react-router-dom'
-// import BookComponent from '../Component/BookComponent';
-
-import SignIn from '../Pages/Credental';
-import Dashboard from './Component/Dashboard';
-import BookDetails  from './Component/BookComponent';
-// import MyCartComponent from './Pages/Component/MyCartComponent';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignIn from "../Pages/Credental";
+import Dashboard from "./Component/Dashboard";
+import { BookDetails } from "./Component/BookComponent";
+import Layout from "./Component/Layout"; // Import the Layout component
 
 function Router() {
   return (
-        <BrowserRouter >
-                <Routes>
-                    <Route  path="/" element={<SignIn/>} />
-                    <Route path="/Dashboard" element={<Dashboard/>} /> 
-                    <Route path="/bookdetails/:id" element={<BookDetails/>} /> 
-                    {/* <Route path="/Header" element={Header} /> */}
-                    {/* <Route path="/NoteOne" element={TakeNoteOne} /> */}
-                    {/* <Route path="/NoteTwo" element={<TakeNoteTwo/>} /> */}
-                    {/* <Route path="/NoteThree" element={<TakeNoteThree/>} /> */}
+    <BrowserRouter>
+      <Routes>
+        {/* Public route without the Header */}
+        <Route path="/" element={<SignIn />} />
 
-                 </Routes>
-        </BrowserRouter>
-    )
+        {/* Routes with the Header */}
+        <Route element={<Layout />}>
+          {/* Pass child routes here */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/bookdetails/:id" element={<BookDetails />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default Router
+export default Router;
