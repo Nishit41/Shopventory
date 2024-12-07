@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "../Pages/Credental";
 import Dashboard from "./Component/Dashboard";
-import { BookDetails } from "./Component/BookComponent";
+import {  ProductDetails } from "./Component/ProductDetails";
 import Layout from "./Component/Layout"; // Import the Layout component
 
 function Router() {
@@ -15,7 +15,7 @@ function Router() {
         <Route element={<Layout />}>
           {/* Pass child routes here */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/bookdetails/:id" element={<BookDetails />} />
+           <Route path="/productdetails/:id" element={<ProductDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>

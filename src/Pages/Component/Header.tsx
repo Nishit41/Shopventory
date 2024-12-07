@@ -20,7 +20,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import bookpic from '../Asset/Images/education@2x.png';
 import MyCartComponent from './MyCartComponent';
 import { useState } from 'react';
-import BookComponent from './Books';
+import BookComponent from './Products';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

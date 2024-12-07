@@ -1,47 +1,30 @@
-import { Paper } from "@mui/material";
-import { bookDetails } from "../Pages/types/bookDetails";
+import { Box, Paper } from "@mui/material";
+import { ProductList } from "../Pages/types/ProductDetails";
 import { useDispatch } from "react-redux";
-import { setBookDetails } from "./BookSlice";
 import { useNavigate } from "react-router";
 
-interface Props {
-  bookDetails: bookDetails;
-  HandleBookDetailsLargeWidth: (
-    description: string,
-    author: string,
-    price: number,
-    id: number,
-    bookName: string
-  ) => void;
-  bookpic: string;
+interface ProductProps {
+  product: ProductList;
+  showProductDetails?: boolean;
 }
 
-export const Book = ({
-  bookpic,
-  bookDetails,
-  HandleBookDetailsLargeWidth,
-}: Props) => {
+export const Product: React.FC<ProductProps> = ({ product, showProductDetails=false }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const handleBookDescription = () => {
-    navigate(`/bookdetails/${bookDetails._id}`)
-  }
+    navigate(`/productdetails/${product.id}`);
+    // dispatch(set(product)); // Pass the product details to Redux
+  };
 
-        // HandleBookDetailsLargeWidth(description, author, price, _id, bookName);
-        // dispatch(setBookDetails(bookDetails));
+  const { description, price, title, category, image } = product;
 
-
-  const { description, author, price, _id, bookName } = bookDetails;
-  
   return (
     <Paper
       className="individualBook"
       elevation={2}
-      onClick={
-        handleBookDescription
-      }
-      style={{ width: "14vw", height: "36vh", border: "0px solid" }}
+      onClick={handleBookDescription}
+      style={{ width: "14vw", border: "0px solid" }}
     >
       <div
         style={{
@@ -51,25 +34,25 @@ export const Book = ({
         }}
       >
         <img
-          src={bookpic}
+          src={image}
           style={{ width: "60%", height: "100%", marginLeft: "18%" }}
           alt="book"
         />
       </div>
       <div style={{ marginLeft: "10px" }}>
-        <span style={{ font: "normal normal bold 12px/16px Roboto" }}>
-          {description}
-        </span>
-        <br />
-        <span
+      <span
           style={{
             font: "normal normal bold 12px/16px Roboto",
             color: "#878787",
           }}
         >
-          {author}
+          {title}
+        </span>
+        <span style={{ font: "normal normal bold 12px/16px Roboto" }}>
+          {description}
         </span>
         <br />
+       {showProductDetails &&  <Box>
         <button
           style={{
             background: "DarkGreen",
@@ -80,10 +63,11 @@ export const Book = ({
             border: "none",
           }}
         >
-          4.5*
+          {category}{" "}
         </button>
         <span style={{ fontSize: "x-small" }}>(20)</span>
         <br />
+       </Box>}
         <span
           style={{
             font: "normal normal bold 12px/16px Roboto",

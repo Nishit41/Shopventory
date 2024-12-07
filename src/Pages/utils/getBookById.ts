@@ -1,5 +1,6 @@
-import { bookDetails } from "../types/bookDetails";
+import {  } from "../types/ProductDetails";
 
 export const getBookById = (id: number, books: any) => {
-  return books?.find((book:bookDetails) => book._id === id);
+  console.log("");
+  // return books?.find((book:bookDetails) => book._id === id);
 };
