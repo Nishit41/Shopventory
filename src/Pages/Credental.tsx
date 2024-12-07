@@ -44,7 +44,7 @@ const SignIn = () => {
       .then((resp) => {
         if (!SignUp) {
           localStorage.setItem("token", resp?.data?.result.accessToken);
-          navigate("/Dashboard");
+          navigate("/dashboard");
         }
       })
       .catch(console.error);

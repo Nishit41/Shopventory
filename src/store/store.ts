@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import bookreducer from '../features/BookSlice';
+import productreducer from '../features/productSlice';
 
 const store = configureStore({
   reducer: {
-    book: bookreducer,
+    book: productreducer,
   },
 });
 
+export type RootState = ReturnType<typeof store.getState>;
 export default store;

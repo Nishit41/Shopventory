@@ -1,13 +1,11 @@
 import axios from "axios";
 import { headerConfig } from "../utils/constant";
+import { ProductList } from "../types/ProductDetails";
 
-export const getBookDescription = async () => {
+
+export const getProductDetails = async () => {
   try {
-    const response = await fetch(
-      "https://bookstore.incubation.bridgelabz.com/bookstore_user/get/book",
-      headerConfig
-    );
-
+    const response = await fetch("https://fakestoreapi.com/products");
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -19,19 +17,41 @@ export const getBookDescription = async () => {
   }
 };
 
-export const add_cart_item_api = (id: any) => {
-  console.log("id for post", id);
-  console.log("localstorage", headerConfig);
-  let response = axios.post(
-    `https://bookstore.incubation.bridgelabz.com/bookstore_user/add_cart_item/${id}`,
-    id,
-    headerConfig
-  );
-  return response;
+export const getProductById = async (id: string) => {
+  try {
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching book description:", error);
+    throw error;
+  }
 };
 
-export const add__item_to_wishListApi = (id: any) => {
-  console.log("id for post to wishlist", id);
+export const addItemToCart = async (userId :string, productId: ProductList, products: ProductList[] ) => {
+  try {
+    const response = await fetch("https://fakestoreapi.com/carts", {
+      method: "POST",
+      body: JSON.stringify({
+        userId,
+        date,
+        products
+      }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching book description:", error);
+    throw error;
+  }
+};
+
+export const add_item_to_wishListApi = (id: any) => {
   let response = axios.post(
     `https://bookstore.incubation.bridgelabz.com/bookstore_user/add_wish_list/${id}`,
     id,
