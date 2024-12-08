@@ -181,7 +181,7 @@ export default function Header() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block',} }}
             >
-             <img src={bookpic} style={{width:"50px",height:"24px",marginLeft:"18vw"}}/>     
+             <img src={bookpic} alt={"Product"} style={{width:"50px",height:"24px",marginLeft:"18vw"}}/>     
           </Typography> 
            <Typography
             variant="h6"

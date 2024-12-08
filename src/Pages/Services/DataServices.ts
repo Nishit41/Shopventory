@@ -1,6 +1,7 @@
 import axios from "axios";
 import { headerConfig } from "../utils/constant";
 import { ProductList } from "../types/ProductDetails";
+import { CartPayload } from "../Component/Counter";
 
 
 export const getProductDetails = async () => {
@@ -31,13 +32,13 @@ export const getProductById = async (id: string) => {
   }
 };
 
-export const addItemToCart = async (userId :string, productId: ProductList, products: ProductList[] ) => {
+export const addItemToCart = async (userId :number, products: CartPayload[] ) => {
   try {
     const response = await fetch("https://fakestoreapi.com/carts", {
       method: "POST",
       body: JSON.stringify({
         userId,
-        date,
+        date:Date.now(),
         products
       }),
     });
