@@ -1,4 +1,4 @@
-# Hosted URL 
+# Hosted URL
 https://shopventory-s1u5.vercel.app/
 
 # Getting Started with Create React App
