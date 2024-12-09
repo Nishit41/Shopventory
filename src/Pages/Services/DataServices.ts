@@ -1,6 +1,5 @@
 import axios from "axios";
 import { headerConfig } from "../utils/constant";
-import { ProductList } from "../types/ProductDetails";
 import { CartPayload } from "../Component/Counter";
 
 
@@ -52,13 +51,14 @@ export const addItemToCart = async (userId :number, products: CartPayload[] ) =>
   }
 };
 
-export const add_item_to_wishListApi = (id: any) => {
-  let response = axios.post(
-    `https://bookstore.incubation.bridgelabz.com/bookstore_user/add_wish_list/${id}`,
-    id,
-    headerConfig
-  );
-  return response;
+export const getUserCart = async (userId: string) => {
+  try{
+     const response = await fetch(`https://fakestoreapi.com/carts/user/${userId}`)
+     return await response.json();
+  }
+  catch(error){
+   console.error("error fetching Cart",error)
+  }
 };
 
 export const get_cart_Item_api = () => {
