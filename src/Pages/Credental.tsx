@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { signInApi, signUpApi } from "./Services/userservices";
 import { validateInput } from "./utils/ValidateInput";
 import { EMPTY_STRING } from "./utils/constant";
-import { AuthForm } from "./Component/AuthForm";
+import { AuthForm } from "../Component/AuthForm";
 
 const SignIn = () => {
   const [SignUp, setSignUp] = useState(false);

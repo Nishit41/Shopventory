@@ -1,8 +1,8 @@
 import React from 'react';
-import BookComponent from './Pages/Component/Products';
+import BookComponent from './Component/Products';
 import SignIn from './Pages/Credental';
-import Header from './Pages/Component/Header';
-import MyCartComponent from './Pages/Component/MyCartComponent';
+import Header from './Component/Header';
+import MyCartComponent from './Component/MyCartComponent';
 import Router from './Pages/Router';
 
 function App() {
