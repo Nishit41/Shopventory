@@ -9,18 +9,12 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import bookpic from '../Asset/Images/education@2x.png';
-import MyCartComponent from './MyCartComponent';
 import { useState } from 'react';
-import BookComponent from './Products';
+import { UserCart } from '../features/UserCart';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -65,12 +59,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
-  const [ cartDisplay  , setCartDisplay] = useState<boolean>(false)
+  const [showCart,setShowCart] = useState<boolean>(false)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -82,7 +75,7 @@ export default function Header() {
     handleMobileMenuClose();
   };
    const handleCart = () => {
-    setCartDisplay(true)
+    setShowCart(true)
    };
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -112,56 +105,6 @@ export default function Header() {
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
 
   return (
     <Box sx={{ flexGrow: 1,}}>
@@ -181,7 +124,7 @@ export default function Header() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block',} }}
             >
-             <img src={bookpic} alt={"Product"} style={{width:"50px",height:"24px",marginLeft:"18vw"}}/>     
+             <img src="" alt={"Product"} style={{width:"50px",height:"24px",marginLeft:"18vw"}}/>     
           </Typography> 
            <Typography
             variant="h6"
@@ -226,13 +169,12 @@ export default function Header() {
               onClick={handleProfileMenuOpen}
               color="inherit"
              >
-               <Badge color="error"  onClick={handleCart}>
+               <Badge color="error"  onClick={()=>handleCart}>
               < ShoppingCartOutlinedIcon />
               <div style={{fontSize:"xx-small",position:"absolute",top:"26px",left:"2.5px"}}>
                Cart
               </div>
               </Badge>
-
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -249,8 +191,7 @@ export default function Header() {
           </Box>
         </Toolbar>
       </AppBar>
-     
-       {cartDisplay && <MyCartComponent/>}   
+         {showCart && <UserCart/> }    
     </Box>
   );
 }
