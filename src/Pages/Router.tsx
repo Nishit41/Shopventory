@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "../Pages/Credental";
-import Dashboard from "./Component/Dashboard";
-import {  ProductDetails } from "./Component/ProductDetails";
-import Layout from "./Component/Layout"; // Import the Layout component
+import Dashboard from "../Component/Dashboard";
+import {  ProductDetails } from "../Component/ProductDetails";
+import Layout from "../Component/Layout"; // Import the Layout component
 
 function Router() {
   return (

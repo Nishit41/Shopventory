@@ -1,7 +1,7 @@
 import axios from "axios";
 import { headerConfig } from "../utils/constant";
 import { ProductList } from "../types/ProductDetails";
-import { CartPayload } from "../Component/Counter";
+import { CartPayload } from "../../Component/Counter";
 
 
 export const getProductDetails = async () => {

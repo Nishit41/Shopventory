@@ -1,12 +1,12 @@
 import { Box } from "@mui/material";
 import {
   addItemToCart,
-} from "../Services/DataServices";
+} from "../Pages/Services/DataServices";
 import { Counter } from "./Counter";
-import useProductDetail from "../../hooks/useProuductDetail";
+import useProductDetail from "../hooks/useProuductDetail";
 import { useParams } from "react-router";
-import { Product } from "../../features/Product";
-import { ProductList } from "../types/ProductDetails";
+import { Product } from "../features/Product";
+import { ProductList } from "../Pages/types/ProductDetails";
 import { useState } from "react";
 export const ProductDetails = () => {
   const {id} = useParams()
