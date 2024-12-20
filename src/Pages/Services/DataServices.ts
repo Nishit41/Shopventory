@@ -1,8 +1,6 @@
 import axios from "axios";
 import { headerConfig } from "../utils/constant";
-import { ProductList } from "../types/ProductDetails";
 import { CartPayload } from "../../Component/Counter";
-
 
 export const getProductDetails = async () => {
   try {
@@ -32,14 +30,17 @@ export const getProductById = async (id: string) => {
   }
 };
 
-export const addItemToCart = async (userId :number, products: CartPayload[] ) => {
+export const addItemToCart = async (
+  userId: number,
+  products: CartPayload[]
+) => {
   try {
     const response = await fetch("https://fakestoreapi.com/carts", {
       method: "POST",
       body: JSON.stringify({
         userId,
-        date:Date.now(),
-        products
+        date: Date.now(),
+        products,
       }),
     });
     if (!response.ok) {
@@ -53,12 +54,13 @@ export const addItemToCart = async (userId :number, products: CartPayload[] ) =>
 };
 
 export const getUserCart = async (userId: string) => {
-  try{
-     const response = await fetch(`https://fakestoreapi.com/carts/user/${userId}`)
-     return await response.json();
-  }
-  catch(error){
-   console.error("error fetching Cart",error)
+  try {
+    const response = await fetch(
+      `https://fakestoreapi.com/carts/user/${userId}`
+    );
+    return await response.json();
+  } catch (error) {
+    console.error("error fetching Cart", error);
   }
 };
 

@@ -1,87 +1,46 @@
-import { Counter } from "../Pages/Component/Counter"
+import * as React from "react";
+import Button from "@mui/material/Button";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge, { BadgeProps } from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import { useState } from "react";
 
 export const Cart = () => {
-    const userCart = 
-return    <div
-    style={{
-      display: "flex",
-      justifyContent: "space-between",
-      width: "92%",
-      margin: "auto",
-    }}
-  >
-    <div>MyCart(1)</div>
-    <span style={{ width: "10vw" }}></span>
-    <span
-      style={{
-        height: "28px",
-        width: "14vw",
-        border: "1px solid #DBDBDB",
-      }}
-    ></span>
-      {dataForCart.map((element: any) => (
-              <>
-                <div
-                  style={{
-                    width: "18vw",
-                    marginLeft: "18px",
-                    height: "11vh",
-                    display: "flex",
-                    marginBottom: "5px",
-                    marginTop: "40px",
-                    gap: "40px",
-                  }}
-                >
-                  <img src={bookpic} style={{ width: "4.8vw" }}></img>
-                  {/* below div is book details upto my cart */}
-                  <div
-                    className="BookDetailsInMyCart"
-                    style={{ marginTop: "-10px", marginLeft: "0px" }}
-                  >
-                    <p style={{ font: "normal normal normal 15px/17px Lato" }}>
-                      {/* Don't make me think */}
-                      {element.product_id.bookName}
-                      <br />
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    height: 600,
+    bgcolor: "orange",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
 
-                      <span style={{ color: "#9D9D9D" }}>
-                        {element.product_id.description}{" "}
-                      </span>
-                      <br />
-                      <button
-                        style={{
-                          background: "DarkGreen",
-                          width: "50px",
-                          height: "20px",
-                          fontSize: "xx-small",
-                          color: "white",
-                          border: "none",
-                        }}
-                      >
-                        4.5*
-                      </button>
-                      <br />
-                      <span>Rs {element.product_id.price}</span>
-                    </p>
-                  </div>
-                  {/* upto this above div book details is my cart  */}
-                </div>
-                  <Counter/>
-                <button
-                style={{
-                  height: "29px",
-                  width: "8vw",
-                  marginLeft: "80%",
-                  background: "#3371B5 0% 0% no-repeat padding-box",
-                  borderRadius: "2px",
-                  border: "none",
-                  color: "#FFFFFF",
-                  marginBottom: "50px",
-                }}
-                // onClick={() => displayCustomerDetails()}
-              >
-                PLACE ORDER
-              </button>
-              </>
-            ))}
-  </div>
-}
+  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+    },
+  }));
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  return (
+    <div>
+      <IconButton aria-label="cart" onClick={handleOpen}>
+        <StyledBadge badgeContent={4} color="secondary">
+          <ShoppingCartIcon />
+        </StyledBadge>
+      </IconButton>
+      <Button onClick={handleOpen}>Open modal</Button>
+   
+    </div>
+  );
+};

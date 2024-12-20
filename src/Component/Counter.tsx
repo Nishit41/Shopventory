@@ -9,7 +9,7 @@ export interface CartPayload {
 
 export const Counter = ({ product }: any) => {
   const [count, setCount] = useState<number>(0);
-  let userId = 1;
+  let userId = 1; // TODO: userID be replaced with user
   const cartProducts: CartPayload[] = [];
   const addToCart = async (quantity: number) => {
     setCount(quantity);
