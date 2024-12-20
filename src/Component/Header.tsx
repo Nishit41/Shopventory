@@ -6,50 +6,33 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useState } from "react";
+import { Cart } from "../features/Cart";
 
-export const Header=()=> {
-   const [showCartItems, setShowCartItems] = useState<boolean>(false);
-  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
-    "& .MuiBadge-badge": {
-      right: -3,
-      top: 13,
-      border: `2px solid ${theme.palette.background.paper}`,
-      padding: "0 4px",
-    },
-  }));
+export const Header = () => {
+  const [showCartItems, setShowCartItems] = useState<boolean>(false);
+  console.log("showCartItems", showCartItems);
+
 
   return (
-     <>
-     <AppBar position="fixed">
+    <>
+      <AppBar position="fixed">
+        {/* <Box sx={{display:"flex", alignItems:"center"}}> */}
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-          >
+          > */}
             <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div">
-            <IconButton aria-label="cart" onClick={()=>setShowCartItems(true)}>
-              <StyledBadge badgeContent={4} color="secondary">
-                <ShoppingCartIcon />
-              </StyledBadge>
-            </IconButton>
-          </Typography>
+          {/* </IconButton> */}
+        <Cart/>
+         
         </Toolbar>
+        {/* </Box> */}
       </AppBar>
-      {
-        showCartItems && (
-        <Box sx={{ width:"550px", background:"orange",color:"white" }}>
-          {/* Cart items */}
-          cdslkfjkdsflksfklflksdflsfkl
-        </Box>
-        )
-      }
-      </>
+    </>
   );
-}
+};
