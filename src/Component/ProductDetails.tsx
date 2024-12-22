@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import {
   addItemToCart,
-} from "../Pages/Services/DataServices";
+} from "../Services/DataServices";
 import { Counter } from "./Counter";
 import useProductDetail from "../hooks/useProuductDetail";
 import { useParams } from "react-router";

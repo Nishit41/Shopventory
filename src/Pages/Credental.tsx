@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AppBar, Box,Toolbar, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
-import { signInApi, signUpApi } from "./Services/userservices";
+import { signInApi, signUpApi } from "../Services/userservices";
 import { validateInput } from "./utils/ValidateInput";
 import { EMPTY_STRING } from "./utils/constant";
 import { AuthForm } from "../Component/AuthForm";

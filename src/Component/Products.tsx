@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   get_cart_Item_api,
-} from "../Pages/Services/DataServices";
+} from "../Services/DataServices";
 import { EMPTY_STRING } from "../Pages/utils/constant";
 import { Product } from "../features/Product";
 import { Box } from "@mui/material";
