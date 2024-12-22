@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const signInApi = (signInObj: any) => {
+export const signInApi = async(signInObj: any) => {
     let result = axios.post("https://bookstore.incubation.bridgelabz.com/bookstore_user/login", signInObj)
     return result
 }

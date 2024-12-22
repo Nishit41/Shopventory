@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { addItemToCart } from "../Pages/Services/DataServices";
+import { addItemToCart } from "../Services/DataServices";
 import { useState } from "react";
 
 export interface CartPayload {

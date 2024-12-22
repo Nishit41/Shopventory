@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUserCart } from "../Pages/Services/DataServices";
+import { getUserCart } from "../Services/DataServices";
 
 export const useGetCartItems = (id: string) => {
   const [cartItems, setCartItems] = useState<[]>([]);

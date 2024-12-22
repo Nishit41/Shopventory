@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import bookpic from '../Asset/Images/BookImg.png';
 // import OrderSucessFull from './OrderSucessFull';
-import { get_cart_Item_api } from '../Pages/Services/DataServices';
+import { get_cart_Item_api } from '../Services/DataServices';
 type VerifyOrderProps = {
     checkout: any;
  

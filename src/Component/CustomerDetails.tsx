@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 import React, { useState } from 'react'
-import { customerDetailsApi } from '../Pages/Services/DataServices';
+import { customerDetailsApi } from '../Services/DataServices';
 import SummaryView from './SummaryView';
 
 function CustomerDetails() {

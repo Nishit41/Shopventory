@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getProductById } from "../Pages/Services/DataServices";
+import { getProductById } from "../Services/DataServices";
 import { ProductList } from "../Pages/types/ProductDetails";
 
 const useProductDetail = (id: string) => {
