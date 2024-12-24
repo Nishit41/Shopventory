@@ -13,7 +13,6 @@ export const Header = () => {
   const [showCartItems, setShowCartItems] = useState<boolean>(false);
   console.log("showCartItems", showCartItems);
 
-
   return (
     <>
       <AppBar position="fixed">
@@ -26,10 +25,9 @@ export const Header = () => {
             aria-label="menu"
             sx={{ mr: 2 }}
           > */}
-            <MenuIcon />
+          <MenuIcon />
           {/* </IconButton> */}
-        <Cart/>
-         
+          <Cart />
         </Toolbar>
         {/* </Box> */}
       </AppBar>

@@ -4,6 +4,7 @@ import Dashboard from "../Component/Dashboard";
 import { ProductDetails } from "../Component/ProductDetails";
 import Layout from "../Component/Layout"; // Import the Layout component
 import { CartItems } from "./CartItems";
+import ProtectedRoute from "../common/ProtectedRoutes";
 
 function Router() {
   return (
@@ -13,8 +14,14 @@ function Router() {
         <Route path="/" element={<SignIn />} /> 
 
         {/* Routes with the Header */}
-        <Route element={<Layout />}>
-          {/* Pass child routes here */}
+        <Route
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          {/* Protected child routes */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/productdetails/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<CartItems />} />
