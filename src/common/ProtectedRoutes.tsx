@@ -7,11 +7,15 @@ interface ProtectedRouteProps {
 }
 
 function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const { isAuthenticated } = useAuth(); // Check authentication status
+  //const { isAuthenticated } = useAuth(); // Check authentication status
+  const isAuthenticated = true //TODO: Uncomment above line after devlopment
+
 
   if (!isAuthenticated) {
     return <Navigate to="/" replace />;
   }
+
+  console.log({isAuthenticated})
 
   return <>{children}</>;
 }

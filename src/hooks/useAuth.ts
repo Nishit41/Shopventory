@@ -5,8 +5,11 @@ export function useAuth() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    console.log("token", token)
     setIsAuthenticated(!!token); 
   }, []);
+
+  console.log("authen",isAuthenticated);
 
   return { isAuthenticated };
 }

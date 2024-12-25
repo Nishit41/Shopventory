@@ -1,10 +1,22 @@
-import axios from "axios"
+import axios from "axios";
 
-export const signInApi = async(signInObj: any) => {
-    let result = axios.post("https://bookstore.incubation.bridgelabz.com/bookstore_user/login", signInObj)
-    return result
-}
+export const signInApi = async (signInObj: any) => {
+   let result = await fetch('https://fakestoreapi.com/auth/login',{
+        method:'POST',
+        body:JSON.stringify({
+            username: "mor_2314",
+            password: "83r5^_"
+        })
+    })
+
+    console.log("json",result);
+
+  return await result.json();
+};
 export const signUpApi = (signupObject: any) => {
-    let result = axios.post("https://bookstore.incubation.bridgelabz.com/bookstore_app/swagger/api/#/User/post_bookstore_user_registration", signupObject)
-    return result
-}
+  let result = axios.post(
+    "https://bookstore.incubation.bridgelabz.com/bookstore_app/swagger/api/#/User/post_bookstore_user_registration",
+    signupObject
+  );
+  return result;
+};

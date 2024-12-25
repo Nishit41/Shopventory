@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { useCarts } from "../hooks/useGetAllCartItems";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { setCarts } from "../slice/cartSlice";
+import { setCarts } from "../slices/cartSlice";
 
 export const CartItems = () => {
   const dispatch = useDispatch();
@@ -14,6 +14,8 @@ export const CartItems = () => {
     dispatch(setCarts(carts as any));
     }
   }, [carts]);
+  console.log("carts=>",carts);
+
 
   return <Box sx={{ marginTop: 10 }}>CartItems</Box>;
 };
