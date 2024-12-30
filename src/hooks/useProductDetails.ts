@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { getProductDetails } from "../Services/DataServices";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../slices/productsSlice";
 
 const useProductDetails = () => {
+  const {products:productList} = useSelector(((store:any)=>store.products))
   const dispatch = useDispatch();
-  const [productList, setProductList] = useState([]);
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
 
@@ -13,7 +13,7 @@ const useProductDetails = () => {
     setLoading(true);
     try {
       const productResponse= await getProductDetails(); 
-      setProductList(productResponse || []);
+      dispatch(setProducts(productResponse))      
     } catch (err) {
       console.error("Error fetching book details:", err);
       setError(err);
@@ -23,14 +23,10 @@ const useProductDetails = () => {
   };
   
   useEffect(() => {
+    if(productList.length === 0){
     fetchProducts();
+    }
   }, []); 
-
-   useEffect(() => {
-      if (productList) {
-        dispatch(setProducts(productList));
-      }
-    }, [productList, dispatch]);
 
   return { productList, error, loading };
 };

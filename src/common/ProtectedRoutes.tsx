@@ -15,7 +15,6 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
     return <Navigate to="/" replace />;
   }
 
-  console.log({isAuthenticated})
 
   return <>{children}</>;
 }

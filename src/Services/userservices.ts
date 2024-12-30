@@ -1,5 +1,11 @@
 import axios from "axios";
 
+interface ISignUp{
+  
+}
+
+
+
 export const signInApi = async (signInObj: any) => {
   let result = await fetch("https://fakestoreapi.com/auth/login", {
     method: "POST",
@@ -12,7 +18,7 @@ export const signInApi = async (signInObj: any) => {
 };
 export const signUpApi = (signupObject: any) => {
   let result = axios.post(
-    "https://bookstore.incubation.bridgelabz.com/bookstore_app/swagger/api/#/User/post_bookstore_user_registration",
+    "https://fakestoreapi.com/users",
     signupObject
   );
   return result;
