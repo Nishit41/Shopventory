@@ -5,17 +5,23 @@ import {
 import { Counter } from "./Counter";
 import useProductDetail from "../hooks/useProuductDetail";
 import { useParams } from "react-router";
-import { Product } from "../features/Product";
 import { ProductList } from "../Pages/types/ProductDetails";
 import { useState } from "react";
-export const ProductDetails = () => {
+import { Product } from "../common/types/CartDetails";
+
+interface Props{
+  product?: Product;
+}
+
+export const ProductDetails = ({product}:any) => {
+  console.log("Product",product);
   const {id} = useParams()
   const [counterDisplay, setCounterDisplay] = useState<boolean>(false);
 
-  const {product, loading} = useProductDetail(id as string)
-  if (loading || !product ) {
-    return <h1>Loading...</h1>;
-  }
+  //  const {product, loading} = useProductDetail(id as string)
+  // if (loading || !product ) {
+  //   return <h1>Loading...</h1>;
+  // }
    
   const addToCart = () => {
     
