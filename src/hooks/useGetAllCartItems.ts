@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { getAllCarts } from "../Services/cartServices";
+import { useDispatch, useSelector } from "react-redux";
+import { setCarts } from "../slices/cartSlice";
 
 export const useCarts = () => {
+  const { carts } = useSelector((store: any) => store.carts);
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [carts, setCarts] = useState<any[]>([]); // Replace `any[]` with the appropriate type if known
 
   const fetchCarts = async () => {
     setIsLoading(true);
     try {
       const cartsData = await getAllCarts();
-      setCarts(cartsData);
+      dispatch(setCarts(cartsData));
     } catch (error) {
       console.error("Error fetching carts:", error);
     } finally {
@@ -18,10 +21,10 @@ export const useCarts = () => {
   };
 
   useEffect(() => {
-    fetchCarts();
+    if (!carts) {
+      fetchCarts();
+    }
   }, []);
-
-  console.log("carts=>",carts);
 
   return { carts, isLoading };
 };

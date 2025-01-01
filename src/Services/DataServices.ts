@@ -16,7 +16,7 @@ export const getProductDetails = async () => {
   }
 };
 
-export const getProductById = async (id: string) => {
+export const getProductById = async (id: number) => {
   try {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`);
     if (!response.ok) {
