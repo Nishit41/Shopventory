@@ -10,6 +10,6 @@ export const CartItems = () => {
   const { isLoading, carts } = useCarts();
   isLoading && <>Loading...</>
   return carts?.map((cart:ICart) =><>{JSON.stringify(cart)} 
-  <CartDetails cart={cart} />
+  <CartDetails key={2} cart={cart} />
   </>);
 };
